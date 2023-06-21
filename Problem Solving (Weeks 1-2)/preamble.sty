@@ -1,0 +1,325 @@
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\rmdefault}{zplTLF}% Roman and Bold Pagella for math mode
+\usepackage[T1]{fontenc} % T1 is active encoding for use in math text
+\usepackage[type1]{cabin}% used only by \mathsf, optional
+\usepackage{amsmath,mathtools,amssymb,bm,bbm} % must be loaded before amsthm if using amsthm
+\usepackage{amsthm}% load before newpxmath
+
+\usepackage[vvarbb]{newpxmath}
+\usepackage[no-math]{newpxtext}% pass no-math option to fontspec
+
+% Fontspec will be loaded so that Opentype text fonts may be loaded
+\usepackage{polyglossia} % must load after fontspec
+\setdefaultlanguage[variant=american]{english}
+%\setotherlanguages{french,russian}
+\newfontfamily{\cyrillicfont}[Scale=MatchLowercase]{cochineal}
+\linespread{1.1}% Give Palatino more leading (space between lines)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parskip}{0.3\baselineskip plus 2pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \usepackage{blindtext}
+% \usepackage{setspace}
+\renewcommand{\baselinestretch}{1.1}
+%%%%%%%%%%%%%% Indent %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\if@twocolumn
+  \setlength\parindent{1.0em}
+\else
+  \setlength\parindent{15\p@}
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{subfiles}
+\usepackage{dsfont}
+\usepackage{textcomp}
+\usepackage{relsize}
+\usepackage[hyperfootnotes=false]{hyperref}
+\hypersetup{colorlinks=true}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{yfonts}
+\usepackage[hang,flushmargin]{footmisc} 
+\usepackage{enumitem}
+\usepackage[mathscr]{euscript}
+\usepackage{scalerel}
+\usepackage{wrapfig}
+\usepackage{makecell}
+\usepackage{scrextend,fancyhdr}
+
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+
+
+\pagestyle{fancy}
+
+
+\usepackage{tikz}
+\usepackage{tkz-euclide}
+\usetikzlibrary{matrix}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning,arrows.meta}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{cd}
+\usepackage{quiver}
+\tikzcdset{arrow style=tikz,
+           diagrams={>=Straight Barb}
+          }    % global setting for arrow heads in tikz-cd diagrams
+\tikzset{>=Straight Barb
+           }    % global settings for arrow heads in tikzpicturres
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.7}
+\usepackage{polynom}
+\usepackage{graphicx}
+\graphicspath{ {c:/user/downloads/} }
+\renewcommand{\qedsymbol}{\ensuremath\blacksquare}
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{bm}
+% \usepackage{pdfrender}
+\usepackage{tabularx}
+% \usepackage{spectralsequences}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Basic Math Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\wtilde}[2]{\widetilde{#1}{\mathstrut}^{#2}}
+\newcommand{\N}{\vvmathbb{N}}
+\newcommand{\Z}{\vvmathbb{Z}}
+%\renewcommand{ S}{\mathbb{S}}
+%\newcommand{\R}{\text{\boldmath $\vvmathbb{R}$}}
+\newcommand{\R}{\vvmathbb{R}}
+%\renewcommand{\P}{\vvmathbb{P}}
+\renewcommand{\P}{\text{P}}
+\newcommand{\Gr}{\text{Gr}}
+\newcommand{\Fl}{\text{F}\ell}
+\newcommand{\F}{\vvmathbb{F}}
+\newcommand{\Q}{\vvmathbb{Q}}
+\newcommand{\C}{\vvmathbb{C}}
+\newcommand{\K}{\vvmathbb{K}}
+\newcommand{\V}{\boldmath \mathbb{V}}
+\renewcommand{\H}{\vvmathbb{H}}
+\renewcommand{\O}{\vvmathbb{O}}
+\newcommand{\M}[1]{M_{#1\times #1}(\R)}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\II}{\vvmathbb{1}}
+\newcommand{\divi}{\bigm|}
+\newcommand{\ndivi}{%
+  \mathrel{\mkern.5mu % small adjustment
+    % superimpose \nmid to \big|
+    \ooalign{\hidewidth$\big|$\hidewidth\cr$\nmid$\cr}%
+  }%
+}
+\newcommand*{\boldgreek}[1]{%
+  \textpdfrender{%
+    TextRenderingMode=FillStroke,%
+    LineWidth=.35pt,%
+  }{#1}%
+}
+\newcommand{\TODO}{{\color{red}TODO}}
+%\renewcommand{\v}[1]{\mathbf{#1}}
+\renewcommand{\v}[1]{\text{\boldmath  $#1$}}
+\newcommand{\ip}[2]{\langle #1,#2 \rangle}
+\newcommand{\bb}{\boldgreek}
+\newcommand{\norm}[1]{\left|#1\right|}
+\newcommand{\sgn}{\text{sign}}
+\newcommand{\pt}{\text{pt}}
+\newcommand{\id}{\text{id}}
+\newcommand{\sotimes}{\mathchoice
+  {\mbox{\smaller$\otimes$}}
+  {\mbox{\smaller$\otimes$}}
+  {\mbox{\smaller[-2]$\otimes$}}
+  {\mbox{\smaller[-4]$\otimes$}}
+}
+\newcommand{\swedge}{\mathchoice
+  {\mbox{\smaller$\wedge$}}
+  {\mbox{\smaller$\wedge$}}
+  {\mbox{\smaller[-2]$\wedge$}}
+  {\mbox{\smaller[-4]$\wedge$}}
+}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coim}{coim}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Tr}{tr}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\YExt}{\mathscr{Y}Ext}
+\newcommand{\Set}{\mathsf{Set}}
+\newcommand{\CC}{\mathsf{C}}
+\newcommand{\DD}{\mathsf{D}}
+\renewcommand{\AA}{\mathsf{A}}
+\newcommand{\BB}{\mathsf{B}}
+\renewcommand{\Top}{\mathsf{Top}}
+\newcommand{\CHaus}{\mathsf{CHaus}}
+\newcommand{\CGHaus}{\mathsf{CGHaus}}
+\newcommand{\CW}{\mathsf{CW}}
+\newcommand{\ho}{\text{h}}
+\newcommand{\Cat}{\mathsf{Cat}}
+\newcommand{\Ch}{\mathsf{Ch}}
+\newcommand{\Ab}{\mathsf{Ab}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\Mod}{\mathsf{Mod}}
+\newcommand{\Vect}{\mathsf{Vect}}
+
+\newcommand{\rK}[1]{\wtilde{K}{#1}}
+\newcommand{\rKO}[1]{\wtilde{KO}{#1}}
+\newcommand{\hyph}{\text{-}}
+\newcommand{\ract}{\reflectbox{\rotatebox[origin=c]{180}{$\circlearrowleft$}}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Bun}{Bun}
+\DeclareMathOperator{\VB}{Vect}
+\newcommand{\Y}{\mathscr{Y}}
+\DeclareMathOperator{\cls}{cls}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\coker}{coker}
+\newcommand{\op}{\text{op}}
+\DeclareMathOperator{\fd}{fd}
+\DeclareMathOperator{\st}{st}
+\DeclareMathOperator{\tb}{tb}
+\DeclareMathOperator{\lk}{lk}
+\DeclareMathOperator{\Fr}{F}
+\renewcommand{\L}{\Lambda}
+\DeclareMathOperator{\rot}{r}
+\newcommand{\bbfamily}{\fontencoding{U}\fontfamily{bbold}\selectfont}
+\DeclareMathAlphabet{\mathbbold}{U}{bbold}{m}{n}
+
+\tikzset{arrows={[scale=0.8]}}
+\usepackage{lipsum}
+
+%%%%%%%%%%%%%%%%%%%%%% Theorem Stuff %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[framemethod=tikz]{mdframed}
+\newcommand{\newpline}[1][0em]{$  $\newline \vspace{#1}}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\surroundwithmdframed[outerlinewidth=0.4pt,
+  innerlinewidth=0.4pt,
+  middlelinewidth=1pt,
+  middlelinecolor=white,
+  bottomline=false,topline=false,rightline=false]{definition}
+  
+\newtheoremstyle{theorem} % name
+    {\topsep}                    % Space above
+    {\topsep}                    % Space below
+    {}                   % Body font
+    {}                           % Indent amount
+    {\bfseries}                   % Theorem head font
+    {.}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\surroundwithmdframed[outerlinewidth=0.4pt,
+  innerlinewidth=0.4pt,
+  middlelinewidth=1pt,
+  middlelinecolor=black,
+  bottomline=false,topline=false,rightline=false]{theorem}
+
+\surroundwithmdframed[outerlinewidth=0.0pt,
+  innerlinewidth=0.4pt,
+  middlelinewidth=1pt,
+  middlelinecolor=white,
+  bottomline=false,topline=false,rightline=false]{corollary}
+\newtheoremstyle{propstyle} % name
+    {\topsep}                    % Space above
+    {\topsep}                    % Space below
+    {}                   % Body font
+    {}                           % Indent amount
+    {\bfseries}                   % Theorem head font
+    {.}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{propstyle}
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\surroundwithmdframed[outerlinewidth=0.0pt,
+  innerlinewidth=0.4pt,
+  middlelinewidth=1pt,
+  middlelinecolor=white,
+  bottomline=false,topline=false,rightline=false]{prop}
+
+\surroundwithmdframed[outerlinewidth=0.0pt,
+  innerlinewidth=0.4pt,
+  middlelinewidth=1pt,
+  middlelinecolor=white,
+  bottomline=false,topline=false,rightline=false]{lemma}
+
+
+\newtheoremstyle{scstyle} % name
+    {\topsep}                    % Space above
+    {\topsep}                    % Space below
+    {}                   % Body font
+    {1em}                           % Indent amount
+    {\scshape}                   % Theorem head font
+    {.}                          % Punctuation after theorem head
+    {.5em}                       % Space after theorem head
+    {}  % Theorem head spec (can be left empty, meaning ‘normal’)
+\theoremstyle{scstyle}
+\newtheorem*{exercise}{Exercise}
+\makeatletter
+\newtheoremstyle{indented}
+  {0.5em}% space before
+  {0.5em}% space after
+  {\addtolength{\@totalleftmargin}{15\p@} %3.5em
+   \addtolength{\linewidth}{-15\p@}    
+   \parshape 1 15\p@\linewidth}% body font
+  {}% indent
+  {\scshape}% header font
+  {.}% punctuation
+  {15\p@}% after theorem header
+  {}% header specification (empty for default)
+\makeatother
+\theoremstyle{indented}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[symbol]{footmisc}
+\renewcommand*{\thefootnote}{\arabic{footnote}}
+%\newcommand*{\arabicmarkscale}{0.4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \usepackage[ruled,linesnumbered]{algorithm2e}
+
+% %% This declares a command \Comment
+% %% The argument will be surrounded by /* ... */
+% \SetKwComment{Comment}{\# }{}
+% \SetKwInOut{input}{Input}
+% \SetKwInOut{output}{Output}
+% \SetKw{pass}{Pass}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{Fblue}{RGB}{209, 222, 241}
+\definecolor{FOr}{RGB}{247, 136, 67}
+\definecolor{FBr}{RGB}{158, 104, 42}
+\definecolor{FIGr}{RGB}{9, 148, 65}
+\definecolor{FIOr}{RGB}{255, 121, 0}
+
+
+\newenvironment{problem}[2][Problem]{\pgfmathparse{int(mod(#2,2))} \begin{trivlist}
+\item[\hspace{-1.25em} \colorbox{\ifnum\pgfmathresult=1 FIGr\else Fblue\fi}{{ \parbox{\linewidth+0.85em}{\hspace{0.38em} \hskip \labelsep {\large\bfseries #1}\hskip \labelsep {\large\bfseries #2.}}}}]}{\end{trivlist} \vskip -1.5em} %\vksip 1em}
+
+\newenvironment{block}[1][Intermediary]{\begin{trivlist}
+\item[\hspace{-1.25em} \colorbox{FBr}{{ \parbox{\linewidth+0.85em}{\hspace{0.38em} \hskip \labelsep {\large\bfseries #1}}}}]}{\end{trivlist} \vskip -1.5em}
+\newcommand{\inter}[1]{\begin{block}[#1]\end{block}}
+\newcommand{\prob}[1]{\begin{problem}{#1}\end{problem}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%5 Changes how far up/down sub/supscripts are %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\sbox0{$\relax$\fontdimen16\textfont2=2.5pt
+\fontdimen17\textfont2=2.5pt
+\fontdimen14\textfont2=5pt
+\fontdimen13\textfont2=5pt }
+
+\DeclareMathSizes{9.8}{124}{7}{7}
+\DeclareMathSizes{10.0}{124}{7}{7}
+\DeclareMathSizes{10.95}{10.95}{7}{7}   % For size 10 text
+\DeclareMathSizes{11}{11}{7}{7}     % For size 11 text
+\DeclareMathSizes{12}{124}{14}{10}     % For size 12 text

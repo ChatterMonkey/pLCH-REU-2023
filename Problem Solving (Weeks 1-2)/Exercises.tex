@@ -1,0 +1,175 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{preamble}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\begin{document}
+\tableofcontents
+\newpage
+\lhead{EFM}
+\chead{REU Exercises}
+\rhead{\today}%\today
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\inter{Notation}
+Generically, we will write:
+\begin{itemize}
+    \item  $d= \# \text{ of down cusps}$
+    \item  $u= \# \text{ of up cusps}$
+    \item  $r= \# \text{ of right (or left) cusps}$
+    \item  $p= \# \text{ of positive crossings}$
+    \item  $n= \# \text{ of negative crossings}$
+\end{itemize}
+
+\addcontentsline{toc}{section}{June 5th}
+\section*{\underline{June 5th}}
+
+\prob{1}
+\begin{enumerate}[label=(\alph*)]
+    \item We may write $y(t)=-3t/2$ which agrees with $z'(t)/x'(t)$ whenever the latter expression is defined.
+    \item \TODO
+\end{enumerate}
+
+\prob{2}
+See June\_5\_Q2.pdf.
+
+\prob{3}
+
+\prob{4}
+
+We see Legendrian reiedemeister move $R1$ taking $F_1$ to $F_2$, we have
+    \[\tb(F_1)=(p-n)-r \text{ and } \tb(F_2)=((p+1)-n)-(r+1)=(p-n)-r=\tb(F_1)\]
+no matter the orientation. Additionally,
+\[\rot(F_1)=\frac{1}{2}(d-u) \text{ and } \frac{1}{2}((d+1)-(u+1))\]
+
+
+\inter{Thurston-Bennequin}
+
+\begin{definition}
+    Given a link $(L,L')$, the \textit{linking number} $\lk(L,L')$ is the signed sum of crossing numbers divided by 2.
+\end{definition}
+
+\begin{prop}
+    We have $\tb(\L)=\lk(\L,\L')$ where $\L'$ is a copy of $\L$ obtained by shifting slightly in the $z$ direciton.
+\end{prop}
+
+\begin{proof}
+    For every cusp and crossing in $\L$, we have 1 new crossing and 2 new crossings, respectively, in the link diagram of $(\L,\L')$. For a right cusp, we get a $+1$. For a left cusp, we get a $-1$. For a positive crossing, we get a $+2$
+
+    \TODO
+\end{proof}
+
+\prob{5}
+
+We can compute $\tb(\L)$ by noticing that for every right up-cusp in $\Fr(\L)$, we get a negative crossing in $\Pi(\L)$ and for every 
+
+\prob{6}
+
+\prob{7}
+$S_+$ adds to down cusps one of which is a right cusp. $S_-$ add two up cusps one of which is a right cusp. The number of crossings stay the same so that
+    \[\tb(S_\pm(\L)))=(p-n)-(r+1)=\tb(\L)-1\]
+and
+    \[\rot(S_+(\L))=\frac{1}{2}((d+2)-u)=\rot(\L)+1,\;\; \rot(S_-(\L))=\frac{1}{2}(d-(u+2))=\rot(\L)-1.\]
+
+\addcontentsline{toc}{section}{June 6th}
+\section*{\underline{June 6th}}
+
+\inter{Diagram}
+The following commutes
+\[\begin{tikzcd}[ampersand replacement=\&]
+	{\Omega^0(U)} \& {\Omega^1(U)} \& {\Omega^2(U)} \& {\Omega^3(U)} \\
+	{C^\infty(U)} \& {\mathfrak{X}(U)} \& {\mathfrak{X}(U)} \& {C^\infty(U)}
+	\arrow["d", from=1-1, to=1-2]
+	\arrow["d", from=1-2, to=1-3]
+	\arrow["d", from=1-3, to=1-4]
+	\arrow["\id", from=2-1, to=1-1]
+	\arrow["{\Phi_1}", from=2-2, to=1-2]
+	\arrow["{\Phi_2}", from=2-3, to=1-3]
+	\arrow["{\Phi_3}"', from=2-4, to=1-4]
+	\arrow["\nabla", from=2-1, to=2-2]
+	\arrow["{\nabla \times}", from=2-2, to=2-3]
+	\arrow["\nabla\cdot", from=2-3, to=2-4]
+\end{tikzcd}\]
+where 
+\begin{multline*}
+    \Phi_1(E_1,E_2,E_3)=E_1dx+E_2dy+E_3dz, \;\; \Phi_2(E_1,E_2,E_3)= E_1 dy\wedge dz+E_2 dz\wedge dx + E_3 dz \wedge dy, \\ \text{ and } \Phi_3(h)= h dx \wedge dy \wedge dz.
+\end{multline*}
+
+\prob{1}
+\TODO
+\prob{2}
+First prove that $d(f\wedge \lambda)=df\wedge \lambda$ for $f\in \Omega^0(U)$ and $\lambda \in \Omega^k(U)$. Next note that we only need to worry about the multiplication of one forms since $d(\lambda\wedge \eta)=0$.
+
+Also see See June\_6\_Q2.pdf.
+\prob{3}
+This follows from $\nabla\times \circ \nabla=0$ and $\nabla \cdot 
+ \circ \nabla \times =0$.
+\prob{4}
+Assuming $U$ is simply connected then we know that any vector field with trivial curl, then it is the gradient of a scalar field. So anytwo differ by gradient of scalar field have same curl by linearity.
+
+
+\prob{5}
+We have $\int_C \Vec{F} \cdot d\Vec{s}= \int_a^b \Vec{F}(\gamma(t))\cdot \Dot{\gamma}(t) dt$ where $\gamma$ is some parametrization of $C$. Define $f(x,y,z)=xyz$ and note that $\nabla f= \Vec{F}$. Then $\frac{d}{dt} (f\circ \gamma)= (\Vec{F} \circ \gamma)\cdot \Dot{\gamma}$ by chain rule. Hence, by FTC, we have
+    \[\int_C \Vec{F} \cdot d\Vec{s} = f(\gamma(b))-f(\gamma(a))=f(1,1,1)-f(0,0,0)\]
+and the left is independent of $\gamma$, as required.
+
+
+\prob{6}
+We claim that the following diagram commutes:
+\[\begin{tikzcd}[ampersand replacement=\&]
+	{\Omega^1(U)\times \Omega^1(U)} \& {\Omega^1(U)} \\
+	{\mathfrak{X}(U)\times \mathfrak{X}(U)} \& {\mathfrak{X}(U)}
+	\arrow["{-\wedge-}", from=1-1, to=1-2]
+	\arrow["{\Phi_1\times \Phi_1}"', from=2-1, to=1-1]
+	\arrow["{[-,-]}", from=2-1, to=2-2]
+	\arrow["{\Phi_2}"', from=2-2, to=1-2]
+\end{tikzcd}\]
+Consider $\Vec{E} = \sum_i E_i \Hat{\textbf{x}}_i$ and $\Vec{F}= \sum_j F_j \Hat{\textbf{x}}_j$ and note that
+    \begin{multline*}
+        \left(\sum_{i} E_i dx^i\right) \wedge \left(\sum_{j} F_j dx^j\right)=\sum_{i,j} E_i F_j dx^i \wedge dx^j= \sum_{i<j} (E_i F_j - E_j F_i )dx^i \wedge dx^j\\ =(E_2 F_3-E_3 F_2)dy \wedge dz + (E_3 F_1 - E_1 F_3) dz\wedge dz + (E_1 F_2 - E_2 F_1) dx\wedge dy.
+    \end{multline*}
+Since $\Vec{E}\times \Vec{F} = (E_2 F_3 - E_3 F_2)\Hat{\textbf{x}}+ (E_3 F_1 - E_1 F_3) \Hat{\textbf{y}} + (E_1 F_2 - E_2 F_1) \Hat{\textbf{z}}$, the result follows.
+
+\prob{7}
+Note that \[\xi \wedge \xi =\Phi_2( \Phi_2^{-1}(\xi \wedge \xi )) = \Phi_2(\Phi_1^{-1}(\xi)\times \Phi_1^{-1}(\xi))=\Phi_2(\Vec{0})=0\]
+since $\Vec{v}\times \Vec{v}=\Vec{0}$ for all $\Vec{v}\in \R^3$.
+
+\prob{8}
+\begin{enumerate}[label=(\alph*)]
+    \item Note that $\alpha(\Dot{\gamma}(t))=\Dot{z}(t)-y(t) \Dot{x}(t)$, by definition.
+    \item We have that $d\alpha= - dy\wedge dx = dx\wedge dy$ and hence
+        \[\alpha\wedge d\alpha = dz\wedge dx 
+        \wedge dy - 0 = dx\wedge dy \wedge dz.\]
+\end{enumerate}
+
+\prob{9}
+This surface is a sphere of radius 1. Then we can see that
+    \[\int_{\mathcal{S}}\nu = \int_{\partial \mathcal{B}}\nu=\int_{\mathcal{B}}d\nu=3\int_{\mathcal{B}}dx\wedge dy \wedge dz=4\pi\]
+from Stokes' theorem.
+\prob{10}
+See above.
+
+\addcontentsline{toc}{section}{June 7th}
+\section*{\underline{June 7th}}
+
+\prob{1}
+We see two gradient flow lines on $S^1$ \TODO
+
+Hence, the Morse DGA becomes
+\[\F_2\{p_2\}\xrightarrow{\partial} \F_2\{p_1\}\rightarrow 0\]
+where $\partial p_2 = 2p_1=0$.
+\prob{2}
+
+\prob{3}
+
+\prob{4}
+
+\prob{5}
+
+\prob{6}
+
+\prob{7}
+
+\end{document}

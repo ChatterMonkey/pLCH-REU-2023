@@ -1,0 +1,31 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{preamble}
+\usepackage{tocloft}
+
+\newcommand{\peanut}{\includegraphics[width=1.5em, height=1.5em]{Problem Solving (Weeks 1-2)/peanut_base.png}}
+\newcommand{\nopeanut}{\includegraphics[width=1.5em, height=1.5em]{Problem Solving (Weeks 1-2)/peanut_base_no.png}}
+\newcommand{\incpeanut}{\includegraphics[width=1.5em, height=1.5em]{Problem Solving (Weeks 1-2)/peanut_base_included.png}}
+\newcommand{\neither}{\includegraphics[width=1.5em, height=1.5em]{Problem Solving (Weeks 1-2)/Neither.png}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\begin{document}
+\newpage
+\lhead{EFM}
+\chead{Silly}
+\rhead{\today}%\today
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+
+\[\begin{tikzcd}[ampersand replacement=\&]
+	\incpeanut \& \peanut \\
+	\nopeanut \& \text{neither}%\neither
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=180}, draw=none, from=2-2, to=1-1]
+\end{tikzcd}\]
+
+\end{document}

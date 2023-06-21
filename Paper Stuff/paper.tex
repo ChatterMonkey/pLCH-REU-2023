@@ -1,0 +1,61 @@
+\documentclass[11pt]{amsart}
+\usepackage{alttpreamble}
+% \usepackage{tocloft}
+% \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\begin{document}
+\author{Maya Basu}
+\author{Ethan Clayton}
+\author{Fredrick Mooers}
+
+\address{University of California, Berkeley}
+\email{mab@berkeley.edu}
+
+\address{University of Illinois, Urbana-Champaign}
+\email{ewc3@illinois.edu}
+
+\address{Virginia Tech}
+\email{mooersfl24@vt.edu}
+
+\title{Persistent Legendrian contact homology in $\R^3$}
+
+\begin{abstract}
+\lipsum[2]
+\end{abstract}
+
+\subjclass{53D42; 53D10, 57K10; 55N31}
+\keywords{Legendrian contact homology, Legendrian knot, Persistent Homology}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\lipsum[30]
+
+\section{Background}
+
+Consider a smooth knot $\L$ parametrized by $\gamma:S^1\rightarrow \R^3$ satisfying $\gamma'(t)\in \xi_{std}(\gamma(t))$ where here $\xi_{std}=\ker(dz-ydx)$ gives the standard contact structure on $\R^3$. Such knots are called \textit{Legendrian} and and can be equivalently defined from as a regular solution $\gamma(t)=(x(t),y(t),z(t))$ to the 1st order ODE $z'(t)-y(t)x'(t)=0$ with $\gamma(t)=\gamma(t+1)$ \cite{EN23lch}.
+
+Typically, one is concerned with invariants of Legendrian knots that are preserved under \textit{Legendrian isotopy}, a smooth isotopy $\{\gamma_s:S^1\rightarrow \R^3\}_{s\in [0,1]}$ such that each $\gamma_s$ is Legendrian. Classical invariants include the rotation number, Thurston-Bennequin number, and smooth knot type. A new and powerful invariant initially defined in \cite{CH03inv}, is called the \textit{Legendrian contact homology} of the knot defined as the homology of a certain \textit{Chekanov-Eliashberg DGA}.
+
+\subsection{The DGA}
+
+Fix a Legendrian knot $\L$ and consider the space of \textit{chords} \[X_\L=\{\gamma:[0,1]\rightarrow \R^3 \mid \gamma(t)\in \L \iff t=0,1\}.\]
+This is a smooth infinite dimensional manifold and there is a functional $A:X_\L\rightarrow \R$ defined by $A:\gamma \mapsto \int_\gamma dz-ydx$ called the \textit{action functional}. The critical chords (in the variational calculus sense) are called \textit{Reeb chords}. A chord $\gamma:t\mapsto (x(t),y(t),z(t))$ is a Reeb precisely when $x'(t)=y'(t)=0$, which is just the parametrization for a vertical line. It follows the action $A(\gamma)=z(1)-z(0)$ is just the height $h(\gamma)$ of the vertical line. Furthermore, from the previous description, it follows that Reeb chords are in one-to-one correspondance with the transverse double points found in the Lagrangian projection $\Pi(\L)$.
+
+The idea now is to define the Chekanov-Eliashberg DGA, $(\AlgL,\d_\L)$, as the Morse DGA associated to the `Morse functional' $A:X_\L\rightarrow \R$. From our discription of the Reeb chords above, $\AlgL$ is essentially just the free unital algebra $R\langle a_1,\ldots,a_n,t^{\pm1}\rangle$ over some fixed ground ring $R$, where here $\{a_1,\ldots,a_n\}$ is the finite set of tranverse double points in $\Pi(\L)$. It's not quite the Morse DGA because of the addition of $t^{\pm1}$, which will be explained further later.
+
+\subsubsection{Filtration}
+
+The existence of a Morse function allows for the filtration of the manifold $X_\L$ giving a filtered manifold $\{X^r_\L\}_{r\in[0,\infty)}$ and hence, a persistence module $\AlgL^\bullet=\bigoplus_{r\in[0,\infty)} \AlgL^r$. Noting that $[0,\infty)$ is a monoid over addition, one can form the monoid algebra $R[0,\infty)=R\langle x^r \mid x^{r_1} \cdot x^{r_2} = x^{r_1+r_2} \rangle_{r,r_1,r_2\in [0,\infty)}$, which is a unital $R$-algebra. It then follows that $\AlgL^\bullet$ is a graded module\footnote{Here the grading is determined by the degree and not the height.} over $R[0,\infty)$ determined by $x^r.w=T_{s}^{s+r}(w)$ 
+where $w\in \AlgL^s$ for all $s,r\in [0,\infty)$ as seen in \cite{ZC04pers}. Furthermore, $\AlgL^\bullet$ is a graded algebra over $R[0,\infty)$ by defining $w.v=T_r^{\max(r,s)}(w)T_s^{\max(r,s)}(v)$ where $w\in \AlgL^r$ and $v\in \AlgL^s$. This makes the Chekanov-Eliashberg DGA into a filtered DGA and the corresponding $\AlgL^\bullet$ becomes a $\Z$-graded algebra over $\R[0,\infty)$ since \[w.(x^\tau. v)=w.(T_s^{s+\tau}(v))=T_r^{\max(r,s+\tau)}(w)T_{s+\tau}^{\max(r,s+\tau)}(T_s^{s+\tau}(v))\]Very weird stuff happening
+
+We then see that $w.(T_{q}^{q+s} v) = w T_{q}^{p}(v)=T_p^{p+s}(w)$\ldots
+
+
+
+\newpage
+\printbibliography
+\end{document}
