@@ -1,0 +1,65 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{alttpreamble}
+% \usepackage{tocloft}
+% \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\begin{document}
+\author{Maya Basu}
+
+
+\address{University of California, Berkeley}
+\email{mab@berkeley.edu}
+
+
+
+\title{Journal of the Resident Sparkle Squid}
+\maketitle
+
+
+
+\section{1st Entry}
+
+\subsection{Saturday} The main question is can we come up with an algorithm to assign heights? One homework question was to do this for an example, and to make the inequalities work trivially, I jokingly set one of the Reeb heights to $10^8$. This is what was my eventual inspiration for how we could assign heights. My idea was that there were certain chords which could be made arbitrarily big which allowed other choords to be anything, and we would still get positive area loops. I realized this corresponded to, geometrically, stretching out the outside loops so that generators in that area were "solved" automatically. 
+
+Then I had the next realization - by "solving" loops, I freed them up to "solve" more loops, and so I could propagate through the knot. 
+We spent the rest of the day refining our understanding of exactly how the algorithm would work. 
+
+
+
+\subsection{Monday} Maybe the algorithm stops and doesn't end up propagating through the entire knot - in this case we shouldn't get a solution for every knot. I spent a lot of time trying to rearange knots - putting the interesections in some sort of grid and drawing the knot lines between them - to get some way to prove that the algorithm would finish. My hypothesis was that since the algorithm shouldn't necessarily work for every set of inequalities, it must be some geometric feature of the knot. Essentially, I figured because it was one long strand, this must make some restictions of the inequalities present which would help solve the problem.
+
+We found some interesting relations based on the fact that only certain numbers of + or - generators can show up in teh inequalities, however, these wer ultimitly unhelpful.
+
+Finally, I realized that what I was trying to do - rearrange a knot in a controlled manner was actually already a thing! I realized I could use plat position. From here, it seems very possible to complete the proof, and I eventually figured out one way to do it.
+
+
+\subsection{Tuesday/Wednesday}
+
+The biggest question next seemed to be the issue of contractible chords. As Ethan pointed out, all of the chords in the extras category were contractible, however, we found that intruducing a stabilization gave us a contractible chord in the second class. At first I was confused about why this loop would be contractible when the side loops in the trefoil were not, but then thinking about the issue algebraically, and clarifying a possible definition of contractibility, which I added to the main log, it became imediatly obvious why this was true. 
+
+This is also when we realized the difference between contractible and super-contractible. The discussion can up while trying to go from the categories given by the algorithm to an actual height assignment. The plan was to give all contractible chords of height one, but this made very clear the issue that some contractible chords required modifying others to let them shrink - only the extras, the super contractible chords, could all necessarily be made arbitrarily small. 
+
+Wednesday evening I started on python code to go from the plat position representation of a knot to height assignments using what we had decided to call the flooding algorith.
+
+
+\subsection{Thursday}
+
+Finished the code! This took most of the day. 
+
+Additionally, we discussed out next steps. It seems like to start generating visuals we should try to compute the barcode of many knots. Only finding the homology would leave out information about the basis of generators, but if we found the generators at each step of the filteration, we could easily recover the homology afterwards.
+
+
+\subsection{Friday}
+
+Wrote code that identifies all cycles up to a certain height, given the height filteration and the differentials. Hopefully this will help us create visuals and understand persistance better
+
+
+
+
+ 
+
+
+
+
+
+
+\end{document}

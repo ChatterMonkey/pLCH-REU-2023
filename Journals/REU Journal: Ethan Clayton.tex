@@ -1,0 +1,32 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{alttpreamble}
+% \usepackage{tocloft}
+% \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\begin{document}
+
+\author{Ethan Clayton}
+
+\address{University of Illinois, Urbana-Champaign}
+\email{ewc3@illinois.edu}
+
+\title{REU Journal Entries: Ethan Clayton}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Journal Entry: June 22nd}
+
+Over the weekend, we developed the algorithm to assign heights to each of the Reeb chords in the knot. Following this discovery, I spend the rest of the weekend computing the algorithms on a series of examples. This was both to gain practice with using the algorithm and an attempt to find an knot or particular representation of the knot where the algorithm would fail. I also worked a little with Maya and Fredrick in trying to prove properties about the algorithm, like the fact that it always finishes for knots in plat position and how it is affected by various Reidemiester moves. This algorithm is useful since it can give a 'canonical' assignment of the Reeb height and it gives only a small amount of distinct heights, which streamlines the computation for the Persistent Legendrian Contact Homology.
+\newline
+
+One possible way that the algorithm would fail on a knot, is if, in the set of remaining equations, no variable is always positive. In other words after a step is completed, every variable is negative in at least one remaining equation. As of yet we have not found this configuration in any knot diagram.
+\newline
+
+I also attempted to proved that the functioning of the algorithm is invariant under Reidemeister moves, meaning that if the algorithm finishes for a knot, it will also finish for that knot following a Reidemeister move. This combined with the fact that the algorithm always finishes for a knot in plat position, would have been enough to show that the algorithm always finishes. However, we were unable to prove this for Reidemester move 3. This is because the algorithm works on a global (i.e. the entire knot), rather than a local (one portion of the knot) scale. This means, the consequences of a Reidemester move on one park of the knot effect how the algorithm classifies generators in all parts of the knot, in a manner that my group and I do not entirely understand at this point. 
+\newline
+
+My current focus is to compute PLCH for many different knots in plat position. We will also compute the PLCH of these same knots using different assignments of Reeb heights. From this we can better understand how different Reeb heights affect how the PLCH picture looks and hopefully develop a notion of equivalence between Reeb height orderings. My group mates are also working on some code that will help to automate this proceeds so more examples can be computed faster. This code will also be useful in the future if we are working on large or very complex knots that are too cumbersome to compute by hand. We have already coded a way to solve the algroithm for knots in plat position.
+
+\end{document}

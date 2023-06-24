@@ -1,4 +1,5 @@
-\usepackage{geometry}[margin=1.25in]
+\usepackage{geometry}[margin=1in]
+\usepackage{subfiles}
 % AMS packages
  \usepackage{amsfonts, bbm}
 \usepackage{amsmath}
@@ -6,7 +7,9 @@
 \usepackage{amstext}
 \usepackage{amsthm}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[hyperfootnotes=false,colorlinks=true, color=blue]{hyperref}
+\usepackage[hyperfootnotes=false,colorlinks=true,linkcolor=Cerulean,
+                                                 filecolor=CornflowerBlue,      
+                                                 urlcolor=Cyan]{hyperref}
 \usepackage{yfonts}
 \usepackage[hang,flushmargin]{footmisc} 
 \usepackage{enumitem}
@@ -90,7 +93,7 @@
 \newtheorem{example}[theorem]{Example}
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{question}[theorem]{Question}
-
+\newtheorem{algorithm}[theorem]{Algorithm}
 \usepackage[
 backend=biber,
 style=alphabetic,
@@ -100,6 +103,7 @@ sorting=ynt
 
 \usepackage{lipsum}
 
+\newcommand{\TODO}{{\color{red}TODO}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%5 Changes how far up/down sub/supscripts are %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

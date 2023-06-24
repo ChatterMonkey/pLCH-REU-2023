@@ -1,0 +1,223 @@
+\documentclass[11pt,oneside]{amsart}
+\usepackage{alttpreamble}
+% \usepackage{tocloft}
+% \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\begin{document}
+\author{Maya Basu}
+\author{Ethan Clayton}
+\author{Fredrick Mooers}
+
+\address{University of California, Berkeley}
+\email{mab@berkeley.edu}
+
+\address{University of Illinois, Urbana-Champaign}
+\email{ewc3@illinois.edu}
+
+\address{Virginia Tech}
+\email{mooersfl24@vt.edu}
+
+\title{Persistent Legendrian contact homology in $\R^3$}
+
+
+
+\subjclass{53D42; 53D10, 57K10; 55N31}
+\keywords{Legendrian contact homology, Legendrian knot, Persistent Homology}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{June 17th: Flooding the Knot}
+
+Consider a Legendrian Knot in the Lagrangian projection. The knot diagram is sectioned into \textit{patches}, enclosed (signed) areas, with total signed area zero. Given a patch in the knot diagram, pick a starting point on the boundary of the patch and travel counterclockwise around the boundary, marking each transverse double point (corner in the boundary) passed with a positive or negative sign depending on the Reeb sign. By Stokes' theorem, the signed sum of the Reeb heights of these double points must be strictly greater than zero.
+
+\begin{definition}[Reeb Inequalities]
+\label{def:ReebIneq}
+The collection of inequalities (one for each patch) obtained in the manner above is called the \textit{Reeb inequalities}.
+\end{definition}
+
+\begin{example}[Trefoil Area]
+\TODO: Add knot diagram.
+    
+\end{example}
+\subsection{Algebraic Description}
+Consider the set of all inequalities obtained by creating a chart for the knot. Follow the following procedure:
+\begin{algorithm}
+\label{alg:AlgFlood}
+    \begin{enumerate} 
+        \item Set $n = 1$
+        \item Considering the (finite) collection of inequalities in the knot chart, find the generators $g_1 \cdots g_k$ which are only listed as positive terms in every inequality.
+        \item Assign generators $g_1 \cdots g_k$ to tier $n$.
+        \item Delete every inequality in the knot chart which contains at least one copy of any of the generators $g_1 \cdots g_k$.
+        \item Increment $n$ by $1$, and repeat steps $2$ through $5$, until the knot chart is empty, meaning there are no remaining inequalities
+        \item Any remaining generators not yet assigned to a tier are placed in the "extras" tier
+    \end{enumerate}
+\end{algorithm}
+
+\subsection{Geometric Description}
+
+Consider the set of all loops which are described by an inequality in the knot diagram. Label each corner of an intersection as $+$ or $-$ as whether traversing the intersection counterclockwise goes from an over-strand to an under-strand ($+$) or from an under-strand to an over-strand ($-$)
+
+\begin{algorithm}
+\label{alg:GeomFlood}
+    \begin{enumerate} 
+        \item Set $n = 1$
+        \item Consider every generator $g_1 \cdots g_k$ where every negative corner of the crossing is in a shaded region. 
+        \item Assign generators $g_1 \cdots g_k$ to tier $n$.
+        \item Shade in ("flood") each region which is an area loop including these generators
+        \item Increment $n$ by $1$, and start from step $2$, until the knot is completely flooded.
+        \item The remaining generators are placed in the "extras" tier.
+    \end{enumerate}
+\end{algorithm}
+
+
+Figure \ref{fig:Flood} shows the geometric flooding algorithm preformed on one of the Chekanov pairs, $m(5_2)$. The color brightness represent at what point in the algorithm the area loop was removed, with lighter coloring meaning being removed later.
+
+
+\begin{figure}[htbp]
+  \label{fig:Flood}
+  \centering
+  \includesvg{Pictures/CE2.svg}
+  \caption{Flooding Algorithm on $m(5_2)$.}
+\end{figure}
+
+
+\subsection{Observations}
+
+
+
+
+
+\includegraphics[width=4in,angle=-90]{Pictures/Exterior Loops.JPG}
+
+
+
+\includegraphics[width=4in]{Pictures/Visualization of Algorithm.JPG}
+
+In this manner, continue through to the nth free generators, obtaining n classes of freedom, "the extras" are class n, which are never only positive in the remaining equations
+\[f^{1}_1 \cdots f^{1}_{k_1} > f^{2}_1 \cdots f^{2}_{k_2}> \cdots > f^{n-1}_1 \cdots f^{n-1}_{k_{n-1}} > k_n \text{ extras }\]
+
+
+\section{Assigning Heights}
+
+Now we work backwards - assigning those in the extras class (these are all contractible, though not all contractible Reeb chords have to be nth free) to length 1, and then those in the $n-1$th class have length $k_n \cdot 1 + 1$ (+1 is so that we don't get exact equality) and those in the $n-2$nd class have length $ (k_n \cdot 1 + 1)\cdot k_{n-1} + 1$ and those in the $n-3$rd class $ ((k_n \cdot 1 + 1)\cdot k_{n-1} + 1)\cdot k_{n-2} + 1$ etc...
+
+
+
+
+\subsection{Hypothesised equivalency for height lists of the same number of generators}
+
+Perhaps an appropriate equivalency relation while include the following notion of equivalence:
+
+Suppose that we have two classing systems of generators. Each produces many strict orderings of generators which still respect this class system. If the intersection of the set of strict orderings produced by two classing systems is nonzero, perhaps we should we consider these equivalent.
+
+
+
+
+Further note:
+
+These classes give us a filtration which is an action filtration with equities set at every opportunity. 
+
+
+
+
+
+
+
+\section{June 19th: Proof of algorithm in a special case}
+
+
+\begin{theorem}
+    If a Legendrian Knot is in plat position and Ng's algorithm is applied, then for the resulting Lagrangian projection, our algorithm will always terminate.
+\end{theorem}
+
+\begin{proof}
+    There are a finite number of total intersection within the knot. Therefore, if we can show that in each cycle of the algorithm, at least one intersection is placed into a tier, then the total number of remaining intersection is strictly decreasing and the algorithm must terminate.
+
+    For any tier in the algorithm, consider the rightmost remaining intersection. It has two negative signs, above and below. By the nature of plat position, these negative signs are in a loop with a positive sign at an intersection to the right. Since by assumption those intersections are already cleared, the loops above and blow are filled in. Now there are two cases, either the intersection has only positive crossings remaining, or it is empty on the right and is thus an extra.
+
+    If the intersection has only positive crossings remaining it is in the next tier and we are done. If the intersection is an extra then we must move to the next rightmost remaining intersection. Again this intersection has two negative signs, above and below which must have loops with positives to the right. The only intersections to the right are ones already covered or the extra we from the previous step. It a negative crossing has an extra to the right then it must be on an exterior loop since the extra is empty on the left. Otherwise, the negative crossing has an already covered positive to the right and is thus covered. In either case the new intersection has both negative crossings eliminated. Thus we are in the same position as before and the crossing is either in the next tier or an extra. If it is an extra we repeat this process until we find a non-extra or we have gone through all intersection.
+
+    If we find an non-extra then it is placed in the next tier. Therefore each tier in the algorithm reduces the total number of remaining loops by one, and the algorithm must terminate. If there are no non-extras then all remaining intersections are places in the extras category and the algorithm also terminates. 
+\end{proof}
+
+\begin{figure}[htbp]
+  \label{fig:PlatProof}
+  \centering
+  \includesvg{Pictures/proof1.svg}
+  \caption{In plat, we trust.}
+\end{figure}
+
+
+Consider a knot in plat position which has two types of crossings. Considering a row (we call a region such as the one shaded below a "row", a strip where it ends in a loop).
+
+
+
+there are crossings within rows and crossings between rows. Working our way from the right
+
+
+
+
+
+
+Further observations:
+
+All extras are "super" contractable (these are generators which are never responsible for shading a loop - therefore they can \textbf{all} be set equal to zero \textbf{simultaneously}.
+
+Not all contractible chords are super contractible - some chords may go to zero iff one of the other positive generators in their loop increases by some finite amount. 
+
+
+If there are no extras (super contractible chords) than the last class are contractible, as the lack of extras implies the last set of equations to be crossed out contains no negatives. 
+
+
+Contractible chords can be in classes other than the last/extras class. For example, a stabilization introduced a contractible chord in the second class.
+
+
+
+
+
+
+
+
+
+\section{June 21st}
+
+
+Algebraic description of contractability:
+
+A contractible crossing is a generator $a_i$ in the area inequalities where for each inequality that $a_i$ appears as positive, there are no other negative terms, or if there is one or more negative terms, there is at least one other positive term.
+
+This is a necessary condition for contractibility, but not sufficient, as if we take the "actual" definition of contractibility to be a legandrian isotopy up to the endpoint where the height goes to zero. This can not happen if the above requirement is not satisfied, however, the above requirement does not automatically guarantee the existence of such a legendrian isotopy. 
+
+
+Stabilization:
+
+Adding a stabilization with generator $a_j$ creates a contractible reed chord, because we add two things to the area inequalities: $a_j>0$ and we add a positive $a_j$ to one other area inequality. Because we previously had a valid knot, there must have been at least one other positive in this latter equation, so the added $a_j$ satisfies the necessary conditions of contractibility. 
+
+
+
+
+
+
+
+
+\section{Questions?}
+
+\subfile{General-Information/questions?.tex}
+
+\section{Examples}
+
+\subfile{General-Information/examples.tex}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
