@@ -5,7 +5,7 @@
 \end{question}
 
 \begin{question}
-    What happens when you run the algorithm when setting a contractible Reeb height to 0? What does this look like geometrically?
+    What happens when you run the algorithm when setting a contractible Reeb height to 0? What does this look like geometrically? Zero Resolution.
 \end{question}
 
 \begin{question}
@@ -30,17 +30,18 @@ When we have classes with multiple elements we can sometimes swap the orders. If
 \end{question}
 
 \begin{question}
-Are finite intervals invariant under legandrian isotopy
+Are finite intervals invariant under legandrian isotopy?
 \end{question}
+\begin{proof}[Answer]
+    No! That should be apart of our persistent equivalence relation.
+\end{proof}
 
 \begin{question}
-Double shading corresponds to contractible, extras are stupid contractible (proven)
-
+Double shading corresponds to contractible, extras are stupid contractible.
 \end{question}
-
-\begin{question}
-Removing a crossing and rerunning the algorithm - if the chord is contractible it should still finish
-\end{question}
+\begin{proof}[Answer]
+    See \ref{prop:contractdesc} (\TODO restate prop to include the fact that extras and double shaders are always contractible).
+\end{proof}
 
 \begin{question}
 Could we prove that the algorithm finishing is preserved through isotopy by considering the equations under stable tame isomophism?
@@ -51,18 +52,22 @@ Could we use grid projection to prove things?
 \end{question}
 
 \begin{question}
-Make a python script to compute height assignments
-
+Make a python script to compute height assignments.
 \end{question}
+\begin{proof}[Answer]
+    More or less done thanks to Maya.
+\end{proof}
 
 \begin{question}
 Is non-switchability a property of only having two classes.
 \end{question}
 
 \begin{question}
-
 We should call this the flooding algorithm - knot is flooded  - each class is a "tier" 
 \end{question}
+\begin{proof}[Answer]
+    Yes.
+\end{proof}
 
 \begin{question}
 
@@ -81,4 +86,17 @@ Compute height assignments with python
 \begin{question}
     What would the term super (stupid) contractible even mean? The maximal number of contractible chords you can simultaneously set to zero is a well defined number, but there may be multiple collections that achieve this maximum. This probably isn't a knot invariant, but also probably interesting to look into. Where do our extras from our algorithm lie in this picture? Certainly the number of super contractibles is greater than or equal
 \end{question}
+
+\begin{question}
+    When drawing the bar-code, which generator or sums of generators should we use? In some cases it seems that it is ambiguous and we have a choice of which generators to use, and each choice leads to different effects when the heights of certain generators are changed.
+\end{question}
+
+\begin{question}
+Hypothesis, when changing the height of one generator, it will affect the bar-code only by moving the birth and death time of certain lines, rather than by introducing additional lines.
+\end{question}
+
+\begin{question}
+How will the bar-code be affected by Reidemeister moves (i.e. under the addition of new generators)?
+\end{question}
+
 \end{document}

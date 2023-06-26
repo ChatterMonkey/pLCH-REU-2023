@@ -173,6 +173,9 @@ If there are no extras (super contractible chords) than the last class are contr
 
 Contractible chords can be in classes other than the last/extras class. For example, a stabilization introduced a contractible chord in the second class.
 
+When attempting to 'swap' the heights of generators we observed that an element from a lower tier, can not be made greater than all of the heights of the tier above simultaneously, only some of them.
+
+When doing Reidemeister move one in the front projection, we found that it added a single finite line to the bar-code in $H_0$, with a single (one element) generator. We hypothesize that this is always true, and so when finding an equivalence relation for bar-codes, we can 'mod out' theses types of lines. We will do more examples and test the other two Reidemeister moves.
 
 
 
@@ -184,18 +187,84 @@ Contractible chords can be in classes other than the last/extras class. For exam
 \section{June 21st}
 
 
-Algebraic description of contractability:
+\subsection{Algebraic description of contractability}
+
+\begin{definition}[Contractible]
+    A Reeb chord $a$ is contractible if the Reeb inequalities still hold when the height of $a$ is set to $0$ (modulo disk inequalities \TODO)
+\end{definition}
 
 A contractible crossing is a generator $a_i$ in the area inequalities where for each inequality that $a_i$ appears as positive, there are no other negative terms, or if there is one or more negative terms, there is at least one other positive term.
 
 This is a necessary condition for contractibility, but not sufficient, as if we take the "actual" definition of contractibility to be a legandrian isotopy up to the endpoint where the height goes to zero. This can not happen if the above requirement is not satisfied, however, the above requirement does not automatically guarantee the existence of such a legendrian isotopy. 
 
+\begin{lemma}
+    \label{lem:extradesc}
+    For a Legendrian $\L$ with $F(\L)$ in plat position, the extras of the flooding algorithm are crossings that eventually look like ``pinch crossings''
+\end{lemma}
+\begin{proof}
+    Algebraic v. Geometric picture clear \TODO
+\end{proof}
 
-Stabilization:
+\begin{definition}
+    \label{def:doubleshade}
+    A crossing $a$ in $F(\L)$, that isn't an extra of the flooding algorithm, \textit{double shades at tier $n$} if every inequality at the $n$th step of the flooding diagram that $a$ appears in contains another Reeb height with positive sign. If $a$ double shades at all tiers, we say $a$ double shades.
+\end{definition}
 
+% \begin{lemma}
+%     For $F(\L)$ in plat position, a crossing double shades or is an extra at tier $n$ for some $n$ if and only if it double shades or is an extra at all tiers.
+% \end{lemma}
+
+\begin{lemma}
+    \label{lem:doubleshadecrit}
+        For $F(\L)$ in plat position, a crossing double shades at tier $1$ if and only if it double shades at all tiers.
+\end{lemma}
+\begin{proof}
+    The forward direction is trivial. For the backwards direction, not that if $a$ double shades at tier $1$, then it double shades at least until it's removed at tier $n$. If there is a patch to the left of $a$, then we're done. If there isn't a patch to the left of $a$ then note that the crossing on the other side of the patch to the right of $a$ (when a left crossing exists a right cusp or crossing to the right exists) also exists while $a$ is breathing. If this weren't the case, then $a$ would be negative in all Reeb inequalities at time $n$ and thus making it an extra. Hence, $a$ drowns with its right patch flooding meaning $a$ double shades for all tiers.
+\end{proof}
+
+\begin{proposition}
+    \label{prop:contractdesc}
+    For $F(\L)$ in plat position, a Reeb chord corresponding to a right cusp or double point, $a$, is contractible if and only if $a$ double shades or is an extra or corresponds to a left loop in $\Pi(\L)$.
+\end{proposition}
+
+\begin{proof}
+    ($\Rightarrow$) Assuming that $a$ doesn't double shade, we must show that $a$ is never removed by the flooding algorithm (i.e. $a$ is an extra) or is removed at the last step on the algorithm (i.e. $a$ corresponds to a left loop in $\Pi(\L)$). Since $a$ is contractible, the patch to the left, if it exists, corresponds to an inequality that has no negatives. Such an inequality can exist precisely when $a$ corresponds to a left loop in $\Pi(\L)$. If a left patch doesn't exist, then since $a$ doesn't double shade, it follows that a right patch at a certain step in the algorithm floods before the algorithm terminates, and hence $a$ is an extra.
+
+    ($\Leftarrow$) Clearish?
+\end{proof}
+
+\begin{corollary}
+    \label{cor:contractenum}
+    The flooding algorithm enumerates contractible Reeb chords for a legendrian $\L$ with $F(\L)$ in plat position.
+\end{corollary}
+
+
+\subsection{Stabilization}
 Adding a stabilization with generator $a_j$ creates a contractible reed chord, because we add two things to the area inequalities: $a_j>0$ and we add a positive $a_j$ to one other area inequality. Because we previously had a valid knot, there must have been at least one other positive in this latter equation, so the added $a_j$ satisfies the necessary conditions of contractibility. 
 
+\section{June 26th}
 
+\subsubsection{Reidemeister move F1}
+
+The first Reidemeister move in the Front Projection, now called F1, connects two Legendrian Isotopic Knots. It adds two generators, called $a_i$ and $a_j$, with gradings 1 and 0 respectively. $\d (a_i) = 1 + a_j$ and $\d (a_j) = 0$. Furthermore, this operation does not destroy or create and disks which define the differential for the other generator, though it may add $a_j$ to some disks. As a result, it leads to a small change in the bar-code generated by the persistence homology. Namely, it adds a single, finite, singularly generated line to the bar-code picture in $H_0$. It may also lead to the relabeling of some generators on other lines (almost certainly only those in $H_1$.
+
+
+\subsubsection{Reidemeister move F2}
+
+Hypothesis: The second Reidemeister move in the Front Projection, on Left Cusps, adds two generators $a$ and $b$ with $\d a = b$ and $\d b = 0$. The new generators may be added into other differentials, however, after the height tier which adds $a$, the (truncated) barcode will will look like the same as the original barcode killed off by $\text{\d(original generators} + a)$ whenever $b$ appears is a factor in the original generators differential.\footnote{This is if the augmentations are 'preserved' in the way we would like.} 
+
+See picture for proofs of why differentials don't change all that much. The stuff on the exterior to the left is unaffected, and the stuff to the right is also unaffected. It's *probably* not possible to have a disk in the interior since to move CCW you must inevitably hit a right cusp which would have a positive sign. So, all in all, nothing can be removed from original differentials, only can be added, corresponding to the tame isomorphism. The previous 2 sentences give a reason for why $\d a=b$, since anyother disk needs to hit a right cusp in order to move CCW. All in all, moving right-to-left is harder than left-to-right.
+
+
+
+\subsubsection{Reidemeister Move F3}
+
+The third Reidemeister move, given the natural renaming of generators (where the middle crossing stays the same and the two side crossing switch places, following the middle strand sliding through) induces a map between the DGAs of the two knots. With the following nomanclature we have: (For Mod 2 only!)
+
+\[a_1 \rightarrow a_1\]
+\[a_2 \rightarrow a_2\]
+\[a_3 \rightarrow a_3 + a_2a_1\]
+The proof of this is gotten by considering how each generator can possible be included in a differential disk, and seeing that under this transformation, these disks are transformed appropriatly. Because of mod 2, this map works both ways between the two positions of the move.
 
 
 
@@ -210,10 +279,17 @@ Adding a stabilization with generator $a_j$ creates a contractible reed chord, b
 
 \subfile{General-Information/examples.tex}
 
+\section{Observations}
 
 
 
 
+
+what to do with finite length bars which have a mix of generators
+
+relation between extras and 1st riedmiester moves
+
+can any front projection knot be turned into grid position with only planar isotopy, no reidemister moves (if so, this could be used to prove that height algorithm terminates for any knot)
 
 
 

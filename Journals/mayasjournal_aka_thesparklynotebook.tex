@@ -53,10 +53,27 @@ Additionally, we discussed out next steps. It seems like to start generating vis
 Wrote code that identifies all cycles up to a certain height, given the height filteration and the differentials. Hopefully this will help us create visuals and understand persistance better
 
 
+\section{2nd Entry}
+
+\subsection{Saturday}
+
+Today was mostly grinding examples, all three of us tried varying height assignments(basically the effect of a planar isotopy) and found that this just moved bars but didn't actually change the number of bars or their status as finite/infinite. 
+
+Additionally, I started code that computes the persistant homology given the differentials, the grading, and the height assignments. While this will pribably be useful to help us check our work, my end goal is to have code that can automatically compute the barcode of any given knot, given the differentials, grading, and height assignments. This requires tracking the generators, however I have a plan of how to do this. Because I already wrote something that more or less looks for cycles, I can usilize this at each step of the persistance. That I know the persistant homology (I wil be calculating the kernel/image of each map between gradings) will tell me how many things to look for, which I think will make my task easier. For example, if I know that the kernel of a certain map from grading 1 to 0 has a certain dimentional kernel, then I know how many independent cycles to look for. I shouldn't technically need to compute the homology first, but this gives me a sanity check, and a way to write the code more iterativly, which I think I need since this is a fairly complex procedure.
 
 
- 
 
+
+
+\subsection{Sunday}
+
+I suppose that this belongs is Sunday, since I finished at about 12:30 am, but I did the majority of the code for the homolgy computitions, as at 10:30 pm about, my brain decided that it was inspired, and that I absolutly couldnt call asleep untill I coded out my ideas.  ... lol.  Anyway, today was basically the same as Saturday with all of us doing examples, except Ethan worked out barcode changes for the first riedemister move, and both of them pointed out I needed to be doing computations in mod 2 for the homology code. Something isn't working quite right, but this isn't our first priority, so I will stop working on this for now. Additionally, Ethan and I spent a while trying some simple knots trying to get move three to work, but the results couldn't me augmented. 
+
+\subsection{Monday}
+
+Our focus today was reidemister moves 2 and three. We started out optimisitally trying these moves on the checanov to see what happened but we ran into issues. First, It does not appear that you can even do reidemister move three on the chechanov. I spent a while trying to come up with the plat positions of various knots that might host move three, but I couldn't find a single one that was also augmentable. This is clearly going to be an issue. Fredrick was trying to do reidemister move two and eventually we all ended up working on the example. It seemed like we got the promising result that only a single finite bar was added to $H_{-1}$, but then when computing the last step in persistance, the dimentions stopped working out. Something was wrong and after trying to figure out what for a while we gave up. 
+
+After taking a break, I realized that we shouldn't actually have to try examples, or even find examples to figure out what happened to the bars. If we could find how the DGA transformed directly then possibly we could infer changes to the barcode directly from this. I tried this with the three point move and found a morphism of the differentials that corresponded. It seemed like none of the disks changes except in very controlled ways. THis was great! Then all three of use came up with an argument for a left reidemister two move (a left cusp moving through a vertical strand) which gives us confirmation of a very simple transformation of barcodes. However, returning back to move 3, I couldnt find a way to relate the transformation of the differentials to a transformation of the bars of the barcode. This will be a goal for tommorow. 
 
 
 
