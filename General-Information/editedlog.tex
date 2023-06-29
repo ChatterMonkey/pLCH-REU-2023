@@ -163,7 +163,7 @@ there are crossings within rows and crossings between rows. Working our way from
 
 Further observations:
 
-All extras are "super" contractable (these are generators which are never responsible for shading a loop - therefore they can \textbf{all} be set equal to zero \textbf{simultaneously}.
+All extras are "super" contractible (these are generators which are never responsible for shading a loop - therefore they can \textbf{all} be set equal to zero \textbf{simultaneously}.
 
 Not all contractible chords are super contractible - some chords may go to zero iff one of the other positive generators in their loop increases by some finite amount. 
 
@@ -253,23 +253,78 @@ The first Reidemeister move in the Front Projection, now called F1, connects two
 
 Hypothesis: The second Reidemeister move in the Front Projection, on Left Cusps, adds two generators $a$ and $b$ with $\d a = b$ and $\d b = 0$. The new generators may be added into other differentials, however, after the height tier which adds $a$, the (truncated) barcode will will look like the same as the original barcode killed off by $\text{\d(original generators} + a)$ whenever $b$ appears is a factor in the original generators differential.\footnote{This is if the augmentations are 'preserved' in the way we would like.} 
 
-See picture for proofs of why differentials don't change all that much. The stuff on the exterior to the left is unaffected, and the stuff to the right is also unaffected. It's *probably* not possible to have a disk in the interior since to move CCW you must inevitably hit a right cusp which would have a positive sign. So, all in all, nothing can be removed from original differentials, only can be added, corresponding to the tame isomorphism. The previous 2 sentences give a reason for why $\d a=b$, since anyother disk needs to hit a right cusp in order to move CCW. All in all, moving right-to-left is harder than left-to-right.
+See picture for proofs of why differentials don't change all that much. The stuff on the exterior to the left is unaffected, and the stuff to the right is also unaffected. It's *probably* not possible to have a disk in the interior since to move CCW you must inevitably hit a right cusp which would have a positive sign. So, all in all, nothing can be removed from original differentials, only can be added, corresponding to the tame isomorphism. The previous 2 sentences give a reason for why $\d a=b$, since any other disk needs to hit a right cusp in order to move CCW. All in all, moving right-to-left is harder than left-to-right.
 
 
 
 \subsubsection{Reidemeister Move F3}
 
-The third Reidemeister move, given the natural renaming of generators (where the middle crossing stays the same and the two side crossing switch places, following the middle strand sliding through) induces a map between the DGAs of the two knots. With the following nomanclature we have: (For Mod 2 only!)
+The third Reidemeister move, given the natural renaming of generators (where the middle crossing stays the same and the two side crossing switch places, following the middle strand sliding through) induces a map between the DGAs of the two knots. With the following nomenclature we have: (For Mod 2 only!)
 
 \[a_1 \rightarrow a_1\]
 \[a_2 \rightarrow a_2\]
 \[a_3 \rightarrow a_3 + a_2a_1\]
-The proof of this is gotten by considering how each generator can possible be included in a differential disk, and seeing that under this transformation, these disks are transformed appropriatly. Because of mod 2, this map works both ways between the two positions of the move.
+The proof of this is gotten by considering how each generator can possible be included in a differential disk, and seeing that under this transformation, these disks are transformed appropriately. Because of mod 2, this map works both ways between the two positions of the move.
+
+
+\begin{lemma}
+
+A tame isomorphism induces a map between non-linear DGAs. What is the corresponding map between linearized DGAs that would complete the commutative diagram?
+
+Assume that we wish to consider the tame isomorphism $a_k \rightarrow a_k + u$ (all other generators left unchanged), and assume that $u \neq 1$, and $\epsilon(a_k) = 0$. Additionally, take the map of augmentations to be $\epsilon(g) = \epsilon'(g)$ for $g \neq a_k$, and $\epsilon(a_k) = \epsilon'(a_k + u)$. Consider the non linear DGA consisting of differentials 
+\[\partial x_i = \sum_{j} (g_{1j} \cdots a_k \cdots g_{nj}) + \mathcal{O}\]
+where the first sum 
+
+
+    
+\end{lemma}
 
 
 
 
 
+\section{June 28th}
+
+\subsection{Stablization}
+
+    Any Legendrian Isotopy of knots induces a stable time Isomorphism at the level of DGA's.  We planned to examine the effects that stabilizations and tame isomorphisms have on the persistence module barcode, to understand which parts are homologically significant. 
+    
+    We found that a grading K stabilization, adds a single finite bar to $H_(k-1)$ which is generated by a single element. On the level of DGA's, a grading K stablizations adds two generators $e_k$ and $e_(k-1)$. $e_k$ has grading $k$ and $e_(k-1)$ has grading $k-1$, and their differentials are given by $\d (e_k) = 1 + e_(k-1)$ and $\d e_(k-1) = 0$. After linearizing this must give linear differentials $\d^\epsilon (e_k) = e_(k-1)$ and $\d^\epsilon e_(k-1) = 0$. 
+
+    $e_(k-1)$ causes a finite bar to be born at time $h(e_(k-1))$. and since $\d^\epsilon (e_k) = e_(k-1)$, this bar dies at time $h(e_k)$. This bar has generator $e_(k-1)$. This Stabilization also has no effect on any other differentials, so it does not alter any other bars, finite or otherwise.
+
+\subsection{Tame Isomorphisms}
+
+    A tame isomorphism can change the number of generators for any bar. For example, if a bar is generated by $a_1 + \cdots a_n$, then we can have a tame isomorphism that sends $a_1$ to $a_1 + a_2 + \cdots a_n$, and all other generators to themselves. After this tame isomorphism, the bar will be generated by $a_1$.
+
+\subsection{New Hypothesis}
+
+Wild Speculation:
+    After doing an example we believe we have a new way to define homologically inessential and essential.
+
+    \begin{definition}
+        For a persistence module barcode we call a finite bar $H$-contractible, if there is a valid assignment of heights to Reeb chords such that for any $\epsilon > 0$
+        \begin{enumerate}
+            \item For any Reeb Chord $a_i$, the height $h(a_i) \geq 1$
+            \item the length of the bar $l < \epsilon$
+        \end{enumerate}
+    \end{definition}
+
+    We claim that any $H$-contractible bar is homologically inessential, and that any bar which is not $H$-contractible is homologically essential.
+
+$H$-contractible bars are by definition invariant under planar isotopy, since planar isotopy only corresponds to a reassignment of Reeb heights.
+
+Observation: When doing a Reidemeister move 2 onto the trefoil, we added a new $H$-contractible bar. We also altered the existing finite bar. However it remained not $H$-contractible, which is a good sign. That bar is born at the max of $a_3$ and $a_5$, and is killed either by $a_2$ of $a_1$ and $b_2$. However, we have that $a_2$ must be larger than $a_3 + a_4 + a_5$ and $a_1$ must be larger than $b_1 + a_3 $ and $b_2$ must be larger than $a_4 + a_5$. (+ > max).
+
+Problem: We found that if you do a Front projection Reidemeister move 1, and then a second Front projection Reidemeister move 1 on top of the previous move, the previous $H$-contractible bar that was created by the first move is made not $H$-contractible by the second move. This is because the differential is altered. This gives us a new definition
+
+    \begin{definition}
+        For a persistence module barcode we call a finite bar $H$-contractible, if there is a valid assignment of heights to Reeb chords such that for any $\epsilon > 0$
+        \begin{enumerate}
+            \item For any Reeb Chord $a_i$, if $a_i$ is not contractible, the height $h(a_i) \geq 1$
+            \item the length of the bar $l < \epsilon$
+        \end{enumerate}
+    \end{definition}
 
 \section{Questions?}
 
@@ -287,7 +342,7 @@ The proof of this is gotten by considering how each generator can possible be in
 
 what to do with finite length bars which have a mix of generators
 
-relation between extras and 1st riedmiester moves
+relation between extras and 1st Reidmeister moves
 
 can any front projection knot be turned into grid position with only planar isotopy, no reidemister moves (if so, this could be used to prove that height algorithm terminates for any knot)
 
