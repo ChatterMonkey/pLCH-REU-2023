@@ -72,11 +72,11 @@ Cool inequality:
 
 \section{Jul 10}
 \subsection{Islands exist and the flooding algorithm fails}
-We can do some Lagrangian Reidemeister moves on the trefoil to make our algorithm fail. See figure below:
+We can do some Lagrangian Reidemeister moves on the trefoil to make our algorithm fail. See Figure \ref{fig:failure}:
 \begin{figure}
     \centering
-    \includegraphics{Journals/mathematicastuff.png}
-    \caption{Trying to find solutions to $\max_i(\Delta h(a_i))=\max_i(h(a_i^+))-\max_i(h(a_i^-))$.}
+    \includegraphics[width=\linewidth]{Journals/IMG_2741.jpg}
+    \caption{Flooding algorithm on knot isotopic to standard legendrian trefoil (the island trefoil). Note that the flooding algorithm stops after flooding the disk with $a_3$ in it, because the rest of the heights that appear positive in the remaining inequalities appear negative in another inequality. }
     \label{fig:failure}
 \end{figure}
 We've tried many fixes, none of them succeeding to give something satisfying.
