@@ -55,10 +55,6 @@ This was quite problematic as our definition of being not $H$-contractible meant
 We tried the latter first see if $H$-contractibility can be described by the height changes given by disks corresponding to words in the differential. This proved unsuccessful since we found a height inequality $a_4>a_3$ in Figure \ref{fig:Figure8} above. Now coincidentally we have $|a_4|-|a_3|=(2-3)+(2-1)=0$ so that this height inequality doesn't effect any deaths in the barcode of the figure eight knot LCH. Interesting to note that non-$H$-contractibles, if they depend on inequalities not coming from the differential alone, are probably not isotopy invariant by the fact that the Reidemeister move preformed in the figure above now makes it so that $h_4$ isn't necessarily bigger that $h_3$.
 
 
-
-Hence, we moved onto resistr
-
-
 \section{Jul 7}
 
 Cool inequality:
@@ -72,4 +68,40 @@ Cool inequality:
     \end{align*}
 \end{proof}
 
+{\color{red}\textsc{It has come to my attention that the above is wrong because when doing the $\Delta h(b)$'s I used the reverse of the inequality that was actually correct.}}
+
+\section{Jul 10}
+\subsection{Islands exist and the flooding algorithm fails}
+We can do some Lagrangian Reidemeister moves on the trefoil to make our algorithm fail. See figure below:
+\begin{figure}
+    \centering
+    \includegraphics{Journals/mathematicastuff.png}
+    \caption{Trying to find solutions to $\max_i(\Delta h(a_i))=\max_i(h(a_i^+))-\max_i(h(a_i^-))$.}
+    \label{fig:failure}
+\end{figure}
+We've tried many fixes, none of them succeeding to give something satisfying.
+\subsection{$m_2$ pipe dream}
+For all $\epsilon>0$, does there exists a planar isotopy such that the barcode corresponding to the $m_2$ product and the barcode corresponding to the tensor product agree by some $2\delta$-interweaving for some $\delta$ depending on $\epsilon$? This really just means making the tensor product of bars close to the bar corresponding to the $m_2$ product. Maybe just need a planar isotopy that makes the two diagrams somewhat close.
+
+In some sense, we can just do all of this in plat position and that would be a pretty good result by itself. Potentially we could also look at how Reidemeister moves affect this but it's not something I'm even sure we have time to do.
+
+\section{Jul 11}
+
+I think the main antagonist of this project so far was the fact that the geometry of legendrian knots and the \textit{linearized} contact homology don't relate in a very nice way. It makes proving things very difficult, made worse by the fact that the geometry of legendrian knots doesn't feel very rigid at all. Usually geometry forces the algebra to behave in a very predictable way, but every single idea we've had has been destroyed by translating geometry to liearization and the fact that anything geometric we've come up with can be easily destroyed by Reidemeister moves.
+
+For example, I was trying to work out when the equality $\max(b-c,d-e)=\max(b,d)-\max(c,e)$ and in general with more than two elements, I found that there are so many possibilities from mathematica that it feels almost impossible to characterize (see Figure \ref{fig:mathematica}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{Journals/mathematicastuff.png}
+    \caption{Trying to find solutions to $\max_i(\Delta h(a_i))=\max_i(h(a_i^+))-\max_i(h(a_i^-))$.}
+    \label{fig:mathematica}
+\end{figure}
+
+I even tried seeing if it was possible to see how the barcode would change if you restrict to planar isotopies that change each individual area by at most $\delta$ and there it was impossible to say anything substantial. The reasoning comes in the form of an example: say we have a finite bar coming from $\partial^\epsilon_{(1)}(b)=\sum_i a_i$. We know that each $a_i$ comes from some word of the form $\mathbf{c}a_i\mathbf{d}$ with $\epsilon(\mathbf{c})=\epsilon(\mathbf{d})=1$. But then all we can say is that $-N_i\delta< \Delta h(b)-\Delta h(\mathbf{c})-
+\Delta h(a_i)-\Delta h(\mathbf{d})<N_i\delta$ for some $N_i\in \Z_{\geq 0}$, and so we have no information on the length of the finite bar corresponding to $\sum_i h(a_i)$ because of $h(\mathbf{c})$ and $h(\mathbf{d})$. The augmentation makes arguing about heights near impossible sometimes unless in simple examples like the trefoil.
+
+The only actual thing I proved today was that if the heights change by at most $\delta$, then the length of any bar can change by at most $2\delta$, which is already clear and not very useful.
+
+We finally had something geometric, but nothing came of it because it's too hard! The geometry is not rigid enough. See the other two's journals for the definition of a trapped disk, but it seemed to work so well, only to fail for Reidemeister 3 and essentially fail for Reidemeister 3. We have no reason for this to work, and trying to deal with augmentations is too hard. It's really almost as if we need to just work with the non-linear differential, but we cannot because it's incredibly unruly. At this point we might as well argue things about the characteristic algebra.
 \end{document}
